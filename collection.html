@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to our homepage." />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/collection.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" />
+      </div>
+
+      <div class="hamburger" id="hamburger">&#9776;</div>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="video.html">Video</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="index.html#year1">History and Founders</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="section-title">
+        <h2><i class="fas fa-trophy"></i> Collections</h2>
+      </div>
+
+      <section class="collection-group">
+        <!-- Trophies & Medals -->
+        <!-- Trophies & Medals -->
+        <div class="collection-row">
+          <div
+            class="collection-container trophy-container"
+            onclick="openModal('img/trophy.png', 'The trophies seen in this picture represent the achievements of Olivarez College from multiple competitions and events throughout the years. Every award honors the school’s commitment to quality, excellence, and outstanding performance.', 'TROPHIES')"
+          >
+            <img src="img/trophy.png" alt="Trophy" />
+            <h2 class="collection-title">TROPHIES</h2>
+            <p class="collection-description"></p>
+          </div>
+
+          <div
+            class="collection-container trophy-container"
+            onclick="openModal('img/medals.jpg', 'The medals in this image symbolize Olivarez College`s perseverance and accomplishments in several contests over the years.', 'MEDALS')"
+          >
+            <img src="img/medals.jpg" alt="Medal" />
+            <h2 class="collection-title">MEDALS</h2>
+            <p class="collection-description"></p>
+          </div>
+        </div>
+
+        <!-- Memorabilia & Certificates -->
+        <div class="collection-row">
+          <div
+            class="collection-container trophy-container"
+            onclick="openModal('img/memorabilia.jpg', 'The picture frames shown in this image reflects the important history and memorabilia of Olivarez College, each picture frames hold an important and memorable story.', 'MEMORABILIA')"
+          >
+            <img src="img/memorabilia.jpg" alt="Memorabilia" />
+            <h2 class="collection-title">MEMORABILIA</h2>
+            <p class="collection-description"></p>
+          </div>
+
+          <div
+            class="collection-container trophy-container"
+            onclick="openModal('img/certificate.jpg', 'The certificates in this image demonstrates the accomplishments in both academics and extracurricular activities of Olivarez College. Each one is an example of the competitiveness, commitment, and quality of the students and the school over the years.', 'CERTIFICATES')"
+          >
+            <img src="img/certificate.jpg" alt="Certificate" />
+            <h2 class="collection-title">CERTIFICATES</h2>
+            <p class="collection-description"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="credits">
+        <p>&copy; 2025 Olivarez College Paranaque. All rights reserved.</p>
+        <p class="IT">Information Technology Department</p>
+      </div>
+    </footer>
+
+    <!-- Modal with Close Button -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content side-by-side">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <img id="modalImage" src="" alt="Popup Image" />
+
+        <div class="modal-text">
+          <h3 id="modalTitle">TROPHIES</h3>
+          <p id="modalDescription">
+            Achievements from various competitions and events.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript at bottom for performance -->
+    <script>
+      window.addEventListener("scroll", () => {
+        document
+          .querySelector("nav")
+          .classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+      function openModal(imgSrc, text, title = "") {
+        document.getElementById("modalImage").src = imgSrc;
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalDescription").innerText = text;
+        document.getElementById("imageModal").style.display = "flex";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("imageModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          document.getElementById("imageModal").style.display = "none";
+        }
+      });
+
+      function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
